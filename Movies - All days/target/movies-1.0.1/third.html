@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title> supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p id="namePar"> </p>
+        <div>
+            <form action="#">
+                <input type="text" id="nameToAdd"><br><br>
+                <input type="submit" value="Add name" id="btn">
+                <input type="submit" value="Remove last name" id="btnrmlast">
+                <input type="submit" value="Remove first name" id="btnrmfirst">
+            </form> 
+
+        </div>
+        <p id="htmlPar"> </p>
+
+        <script>
+            var namesForHtml = ["Lars", "Peter", "Jan", "Ian"];
+            document.getElementById("btn").addEventListener("click", function (e) {
+                e.preventDefault();
+                namesForHtml.push(document.getElementById("nameToAdd").value);
+                updateNames();
+            });
+
+            document.getElementById("btnrmlast").addEventListener("click", function (e) {
+                e.preventDefault();
+                namesForHtml.pop();
+                updateNames();
+            });
+
+            document.getElementById("btnrmfirst").addEventListener("click", function (e) {
+                e.preventDefault();
+                namesForHtml.shift();
+                updateNames();
+            });
+
+            function updateNames() {
+                document.getElementById("htmlPar").innerHTML = tohtml(namesForHtml);
+                document.getElementById("namePar").innerHTML = namesForHtml;
+            }
+
+
+            function tohtml(a) {
+                return "<ul>" + a.map(x => "<li>" + x + "</li>").join("") + "</ul>";
+            }
+
+
+            updateNames();
+        </script>
+
+    </body>
+</html>

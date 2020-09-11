@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+            .mydiv {
+                width: 25px;
+                height: 25px;
+                background-color:yellow;
+                margin:1px;
+            }
+        </style>
+        <title> supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id = "outer">
+            <div class="mydiv" id="div1"> 
+                CLICK
+            </div>
+            <div class="mydiv" id="div2">
+                CLICK
+            </div>
+            <div class="mydiv" id="div3">
+                CLICK 
+            </div>
+            <div class="mydiv" id="div4">
+                CLICK
+            </div>
+            <div class="mydiv" id="div5">
+                CLICK
+            </div>
+            <div class="mydiv" id="div6">
+                CLICK
+            </div>
+            <div class="mydiv" id="div7">
+                CLICK
+            </div>
+            <div class="mydiv" id="div8">
+                CLICK
+            </div>
+            <div class="mydiv" id="div9">
+                CLICK
+            </div>
+            <div class="mydiv" id="div10">
+                CLICK
+            </div>
+            <p id = "emptyPara"> </p>
+        </div>
+        <script>
+            document.getElementById("div1").addEventListener("click", function () {
+                console.log("Hi from " + this.id);
+            }
+            );
+            document.getElementById("div2").addEventListener("click", function () {
+                console.log("Hi from " + this.id);
+            }
+            );
+            document.getElementById("outer").addEventListener("click", function (e) {
+                var target = e.target;
+                document.getElementById("emptyPara").innerText = target.id;
+            }
+            );
+        </script>
+    </body>
+</html>

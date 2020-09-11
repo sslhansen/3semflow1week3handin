@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title> supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div> write content</div>
+        <div>
+            <p id ="print"> </p>
+            <form action="#">
+                <input type="text" id="numberInput"><br><br>
+                <input type="submit" value="Price less than" id="btn">
+            </form> 
+        </div>
+        <script>
+            var cars = [
+                {id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000},
+                {id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900},
+                {id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000},
+                {id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799},
+                {id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799}
+            ];
+            makeTable(cars);
+            function makeTable(cars) {
+                let arr = new Array();
+                cars.forEach(x => arr.push((generateTableHtml(x))));
+                arr.unshift("<table class=\"table\"><tr><th>id</th><th>year</th><th>make</th><th>model</th><th>price</th></tr>");
+                arr.push("</table>");
+                document.getElementById("print").innerHTML = arr;
+            }
+
+            function generateTableHtml(obj) {
+                var strArray = new Array();
+                for (var property in obj) {
+                    strArray.push(obj[property]);
+                }
+                let stringWithoutTable = "<tr>" + strArray.map(x => "<td>" + x + "</td>").join("") + "</tr>"
+                return stringWithoutTable;
+            }
+            document.getElementById("btn").addEventListener("click", function (e) {
+                let intInput = document.getElementById("numberInput").value;
+                let sorted = cars.filter(x => x.price < intInput);
+                makeTable(sorted);
+            });
+        </script>
+    </body>
+</html>
